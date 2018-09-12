@@ -1,0 +1,21 @@
+# .circleci/config.yml
+version: 2
+jobs:
+  build-and-test:
+    macos:
+      xcode: "9.2" 
+    steps:
+      - checkout
+      - run: 
+          name: Install swiftlint
+          command: brew install swiftlint
+      - run: 
+          name: swiftlint
+          command: swiftlint
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test
+
